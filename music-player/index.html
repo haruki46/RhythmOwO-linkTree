@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 Music Player</title>
+
+    <!-- Iconify (for play/pause/volume icons) -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS (themeable via CSS variables in :root) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="player-stage">
+
+    <!-- ════════════════════════════════════════════════
+         THEMEABLE P5 MUSIC PLAYER
+
+         Config via data-attributes:
+           data-title  → track name
+           data-src-m4a / data-src-webm → audio sources
+           data-default-volume → 0..1 (default 0.10 = 10%)
+           data-autoplay → "true" | "false" (default true)
+         ════════════════════════════════════════════════ -->
+    <div class="musicbgm">
+        <div class="p5-player" id="p5Player"
+            data-title="I Still Like You"
+            data-src-m4a="assets/bgm/bgm.m4a"
+            data-src-webm="assets/bgm/bgm.webm"
+            data-default-volume="0.10"
+            data-autoplay="true">
+
+            <div class="p5-player-shadow"></div>
+            <div class="p5-player-inner">
+                <div class="p5-player-row">
+                    <!-- Spinning vinyl -->
+                    <div class="p5-vinyl" id="p5Vinyl">
+                        <div class="p5-vinyl-label">
+                            <span class="iconify" data-icon="mdi:music-note" data-width="18"></span>
+                        </div>
+                    </div>
+                    <!-- Track info -->
+                    <div class="p5-track-info">
+                        <div class="p5-now-label">NOW PLAYING</div>
+                        <div class="p5-track-name" id="p5TrackName">I Still Like You</div>
+                    </div>
+                    <!-- Play button -->
+                    <button class="p5-play-btn" id="playBtn" aria-label="Play">
+                        <span class="iconify p5-icon-play" data-icon="mdi:play" data-width="26"></span>
+                        <span class="iconify p5-icon-pause" data-icon="mdi:pause" data-width="26"></span>
+                    </button>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="p5-progress" id="p5Progress">
+                    <div class="p5-progress-fill" id="p5ProgressFill"></div>
+                    <div class="p5-progress-handle" id="p5ProgressHandle"></div>
+                </div>
+                <div class="p5-bottom-row">
+                    <span class="p5-time" id="p5Current">0:00</span>
+                    <div class="p5-volume">
+                        <button class="p5-vol-btn" id="volBtn" aria-label="Mute">
+                            <span class="iconify p5-vol-high" data-icon="mdi:volume-high" data-width="18"></span>
+                            <span class="iconify p5-vol-low" data-icon="mdi:volume-medium" data-width="18"></span>
+                            <span class="iconify p5-vol-mute" data-icon="mdi:volume-mute" data-width="18"></span>
+                        </button>
+                        <div class="p5-vol-slider" id="volSlider">
+                            <div class="p5-vol-fill" id="volFill"></div>
+                            <div class="p5-vol-handle" id="volHandle"></div>
+                        </div>
+                    </div>
+                    <span class="p5-time" id="p5Duration">0:00</span>
+                </div>
+
+                <audio id="bgmAudio" preload="metadata" loop></audio>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+
+</html>

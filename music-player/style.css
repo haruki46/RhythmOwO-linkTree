@@ -1,0 +1,345 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ════════════════════════════════════════════════
+   THEME TOKENS — override these on :root or .p5-player
+   to restyle. P5 red/black/white are the defaults.
+   ════════════════════════════════════════════════ */
+:root {
+    --mp-accent: #D31215;          /* primary accent (red)   */
+    --mp-bg: #0F0F0F;              /* panel / body background (black) */
+    --mp-fg: #F0F0F0;              /* foreground text (white) */
+    --mp-fg-muted: rgba(240, 240, 240, 0.45); /* dimmed text */
+    --mp-track: rgba(240, 240, 240, 0.12);    /* empty bar track */
+    --mp-font-display: 'Oswald', sans-serif;
+    --mp-font-body: 'Inter', sans-serif;
+    --mp-skew: -5deg;              /* overall panel skew */
+    --mp-border-w: 3px;
+    --mp-radius: 0;                /* panel corners (clip-path used by default) */
+}
+
+body.player-stage {
+    background: var(--mp-bg);
+    font-family: var(--mp-font-body);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* ════════════════════════════════════════════════
+   PLAYER LAYOUT
+   ════════════════════════════════════════════════ */
+.musicbgm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.p5-player {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    transform: skewX(var(--mp-skew));
+}
+
+/* Accent offset shadow */
+.p5-player-shadow {
+    position: absolute;
+    inset: 0;
+    background: var(--mp-accent);
+    clip-path: polygon(
+        0% 7%, 3% 0%, 97% 3%, 100% 0%,
+        100% 93%, 97% 100%, 3% 97%, 0% 100%
+    );
+    transform: translate(5px, 5px);
+    z-index: 0;
+    transition: all 0.2s ease;
+}
+
+.p5-player:hover .p5-player-shadow {
+    transform: translate(8px, 8px);
+}
+
+/* Player face */
+.p5-player-inner {
+    position: relative;
+    z-index: 1;
+    background: var(--mp-bg);
+    border: var(--mp-border-w) solid var(--mp-fg);
+    padding: 16px 20px 14px;
+    clip-path: polygon(
+        0% 7%, 3% 0%, 97% 3%, 100% 0%,
+        100% 93%, 97% 100%, 3% 97%, 0% 100%
+    );
+    transition: all 0.15s ease;
+}
+
+.p5-player-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transform: skewX(calc(var(--mp-skew) * -1));
+}
+
+/* ── Vinyl ── */
+.p5-vinyl {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%,
+        var(--mp-accent) 0%, var(--mp-accent) 28%,
+        var(--mp-bg) 28%, var(--mp-bg) 100%);
+    border: 2px solid var(--mp-fg);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: vinylSpin 6s linear infinite;
+    animation-play-state: paused;
+}
+
+.p5-player.playing .p5-vinyl {
+    animation-play-state: running;
+}
+
+.p5-vinyl::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid var(--mp-track);
+    border-radius: 50%;
+}
+
+.p5-vinyl::after {
+    content: '';
+    position: absolute;
+    inset: 11px;
+    border: 1px solid var(--mp-track);
+    border-radius: 50%;
+}
+
+.p5-vinyl-label {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--mp-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.p5-vinyl-label .iconify {
+    color: var(--mp-accent);
+}
+
+@keyframes vinylSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ── Track info ── */
+.p5-track-info {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.p5-now-label {
+    font-family: var(--mp-font-display);
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--mp-accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.p5-track-name {
+    font-family: var(--mp-font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mp-fg);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Play button ── */
+.p5-play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--mp-accent);
+    border: 2px solid var(--mp-fg);
+    color: var(--mp-fg);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    box-shadow: 2px 2px 0 var(--mp-fg);
+}
+
+.p5-play-btn:hover {
+    background: var(--mp-fg);
+    color: var(--mp-accent);
+    transform: scale(1.08);
+}
+
+.p5-play-btn:active {
+    transform: scale(0.95);
+}
+
+.p5-play-btn .iconify {
+    transform: translateX(1px);
+}
+
+.p5-play-btn .p5-icon-pause {
+    display: none;
+    transform: none;
+}
+
+.p5-player.playing .p5-icon-play {
+    display: none;
+}
+
+.p5-player.playing .p5-icon-pause {
+    display: inline-block;
+}
+
+/* ── Progress bar ── */
+.p5-progress {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: var(--mp-track);
+    margin-top: 14px;
+    cursor: pointer;
+    transform: skewX(calc(var(--mp-skew) * -1));
+    clip-path: polygon(2% 0%, 98% 0%, 96% 100%, 4% 100%);
+}
+
+.p5-progress-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--mp-accent);
+    transition: width 0.1s linear;
+}
+
+.p5-progress-handle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 12px;
+    height: 12px;
+    background: var(--mp-fg);
+    border: 2px solid var(--mp-accent);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: left 0.1s linear;
+    pointer-events: none;
+}
+
+/* ── Bottom row (time + volume) ── */
+.p5-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    gap: 10px;
+    transform: skewX(calc(var(--mp-skew) * -1));
+}
+
+.p5-time {
+    font-family: var(--mp-font-display);
+    font-size: 0.6rem;
+    color: var(--mp-fg-muted);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+}
+
+/* ── Volume control ── */
+.p5-volume {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+}
+
+.p5-vol-btn {
+    background: none;
+    border: none;
+    color: var(--mp-fg-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    transition: color 0.15s ease;
+}
+
+.p5-vol-btn:hover {
+    color: var(--mp-accent);
+}
+
+.p5-vol-btn .p5-vol-low,
+.p5-vol-btn .p5-vol-mute {
+    display: none;
+}
+
+.p5-volume.low .p5-vol-high { display: none; }
+.p5-volume.low .p5-vol-low { display: inline-block; }
+
+.p5-volume.muted .p5-vol-high,
+.p5-volume.muted .p5-vol-low { display: none; }
+.p5-volume.muted .p5-vol-mute { display: inline-block; }
+
+.p5-vol-slider {
+    position: relative;
+    width: 70px;
+    height: 5px;
+    background: var(--mp-track);
+    cursor: pointer;
+    clip-path: polygon(2% 0%, 98% 0%, 96% 100%, 4% 100%);
+}
+
+.p5-vol-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 10%;
+    background: var(--mp-accent);
+}
+
+.p5-vol-handle {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 10px;
+    height: 10px;
+    background: var(--mp-fg);
+    border: 2px solid var(--mp-accent);
+    transform: translate(-50%, -50%) rotate(45deg);
+    pointer-events: none;
+}
+
+/* ── Small screens ── */
+@media (max-width: 360px) {
+    .p5-player-inner { padding: 14px 14px 12px; }
+    .p5-vinyl { width: 40px; height: 40px; }
+    .p5-play-btn { width: 36px; height: 36px; }
+    .p5-track-name { font-size: 0.9rem; }
+}

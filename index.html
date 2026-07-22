@@ -1,78 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <link href="style.css" rel="stylesheet">
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-        <link rel="icon" href="assets/icon/graf_spee.ico" type="image/webp">
-        <title>RhythmOwO Linktree~</title>
-    </head>
-    <body>
-        <!-- Snowfall Background Animation -->
-        <section class="animated-background">
-            <div id="stars1"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
-        </section>
-        <!-- End of Snowfall Background Animation -->
+<html lang="th">
 
-        <div class="min-h-full flex-h-center" id="background_div">
-            <div class="mt-48 page-full-wrap relative ">
-                <input type="hidden" value="creator-page" id="page-type">
-                <img class="display-image m-auto color-white" data-src="assets/images/logo.png" src="./assets/images/avatar.png" alt="RhythmOwO"/>
-                <h2 class="page-title page-text-color page-text-font mt-16 text-center">RhythmOwO</h2>
-                
-                <div class="mt-24">
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://www.facebook.com/rhythm0w0/" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/facebook.png" src="assets/images/facebook.png" alt="Facebook @Rhythm0w0"/>
-                            <span class=" item-title text-center">Facebook</span>
-                        </a>
-                    </div>                    
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://www.instagram.com/_rhythm.owo_/" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/instagram.png" src="assets/images/instagram.png" alt="Instagram @Rhythm0w0"/>
-                            <span class=" item-title text-center">Instagram</span>
-                        </a>
-                    </div>     
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://github.com/haruki46" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/github.png" src="assets/images/github.png" alt="GitHub @Haruki64"/>
-                            <span class=" item-title text-center">GitHub </span>
-                        </a>
-                    </div>                             
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://x.com/rhythm_0w0" data-id="261685" data-type="page_item">
-                            <img class="link-each-image"  data-src="assets/images/twitter.png" src="assets/images/twitter.png" alt="Twitter @Rhythm0w0"/>
-                            <span class=" item-title text-center">Twitter </span>
-                        </a>
-                    </div>
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://bsky.app/profile/rhythm0w0.bsky.social" data-id="261685" data-type="page_item">
-                            <img class="link-each-image"  data-src="assets/images/bluesky.png" src="assets/images/bluesky.png" alt="BlueSky @Rhythm0w0"/>
-                            <span class=" item-title text-center">BlueSky </span>
-                        </a>
-                    </div>
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://soundcloud.com/rhythm_0w0" data-id="261685" data-type="page_item">
-                            <img class="link-each-image"data-src="assets/images/soundclound.png" src="assets/images/soundclound.png" alt="HackerRank @Rhythm0w0"/>
-                            <span class=" item-title text-center">SoundClound </span>
-                        </a>
-                    </div>
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://open.spotify.com/user/21z56klxqlmn67lavjokzw57i" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/spotify.png" src="assets/images/spotify.png" alt="Spotify @Rhythm0w0"/>
-                            <span class=" item-title text-center">Spotify </span>
-                        </a>
-                    </div>                                                                            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RhythmOwO | LINKS</title>
+
+
+    <!-- CDNs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="assets/icon/graf_spee.ico" type="image/x-icon">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'p5-red': '#D31215',
+                        'p5-black': '#0F0F0F',
+                        'p5-white': '#F0F0F0',
+                        'p5-darkred': '#8B0000',
+                    },
+                    fontFamily: {
+                        'display': ['Oswald', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-p5-black">
+
+    <!-- ═══ Top Accent Bar ═══ -->
+    <div class="top-bar"></div>
+
+    <!-- ═══ Background Decorations ═══ -->
+    <div class="bg-pattern">
+        <div class="starburst starburst-1"></div>
+        <div class="starburst starburst-2"></div>
+        <div class="starburst starburst-3"></div>
+        <div class="starburst starburst-4"></div>
+    </div>
+    <div class="bg-stripes"></div>
+
+    <!-- ═══ Main Content ═══ -->
+    <div class="main-container">
+
+        <!-- ── Profile Section ── -->
+        <div class="profile-section" id="profileSection">
+            <div class="avatar-wrapper">
+                <img src="./assets/images/avatar.png" alt="RhythmOwO" class="avatar-img">
             </div>
+            <div class="username">Rhythm<span>OwO</span></div>
+            <div class="username-accent"></div>
+            <div class="tagline">`Still I like You</div>
+
+            <!-- ── Music Player (moved to ./music-player/) ── -->
+            <div class="musicbgm"></div>
         </div>
-    </body>
+
+        <!-- ── Separator ── -->
+        <div class="separator" id="separator">
+            <div class="sep-line"></div>
+            <div class="sep-diamond"></div>
+            <div class="sep-line"></div>
+        </div>
+
+        <!-- ── Social Links ── -->
+        <div class="links-container">
+
+            <a href="#" class="p5-link" target="_blank" rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="mdi:facebook" data-width="24"></span>
+                    </span>
+                    <span class="p5-link-text">Facebook</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/_rhythm.owo_/" class="p5-link" target="_blank" rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="mdi:instagram" data-width="24"></span>
+                    </span>
+                    <span class="p5-link-text">Instagram</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/haruki46" class="p5-link" target="_blank" rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="mdi:github" data-width="24"></span>
+                    </span>
+                    <span class="p5-link-text">GitHub</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://x.com/rhythm_0w0" class="p5-link" target="_blank" rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="ri:twitter-x-fill" data-width="22"></span>
+                    </span>
+                    <span class="p5-link-text">Twitter / X</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://bsky.app/profile/rhythm0w0.bsky.social" class="p5-link" target="_blank"
+                rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="simple-icons:bluesky" data-width="22"></span>
+                    </span>
+                    <span class="p5-link-text">BlueSky</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://soundcloud.com/rhythm_0w0" class="p5-link" target="_blank" rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="mdi:soundcloud" data-width="24"></span>
+                    </span>
+                    <span class="p5-link-text">SoundCloud</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+            <a href="https://open.spotify.com/user/21z56klxqlmn67lavjokzw57i" class="p5-link" target="_blank"
+                rel="noopener noreferrer">
+                <div class="p5-link-shadow"></div>
+                <div class="p5-link-inner">
+                    <span class="p5-link-icon">
+                        <span class="iconify" data-icon="mdi:spotify" data-width="24"></span>
+                    </span>
+                    <span class="p5-link-text">Spotify</span>
+                    <span class="p5-link-arrow">▸</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- ── Footer ── -->
+        <div class="footer" id="footer">
+            <div class="footer-diamond"></div>
+            <div class="footer-text">RhythmOwO</div>
+        </div>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+
 </html>

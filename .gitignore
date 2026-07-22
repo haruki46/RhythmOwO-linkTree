@@ -1,0 +1,9 @@
+#Ignor .zcode
+.zcode/
+
+# Exclude old folder
+old/
+
+# Exclude images except avatar.png
+assets/images/*
+!assets/images/avatar.png
